@@ -3,8 +3,8 @@ import datos.ReporteGenerador;
 import empleados.Empleado;
 
 public class SistemaGestion {
-    private EmpleadoDatabase dataBase;
-    private ReporteGenerador generator;
+    private final EmpleadoDatabase dataBase;
+    private final ReporteGenerador generator;
 
     public SistemaGestion(EmpleadoDatabase repositorio, ReporteGenerador generator) {
         this.dataBase = repositorio;
