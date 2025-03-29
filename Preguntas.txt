@@ -1,0 +1,31 @@
+1. Identificar las violaciones de los principios SOLID. 
+  El principio SOLID es una abreviatura basada en cinco partes:
+  
+  S - Single Responsibility (SRP) – Responsabilidad Única
+  O - Open/Closed (OCP) – Abierto/Cerrado
+  L - Liskov Substitution (LSP) – Sustitución de Liskov
+  I - Interface Segregation (ISP) – Segregación de Interfaces
+  D - Dependency Inversion (DIP) – Inversión de Dependencias
+  
+  El código presentado viola todos los principios SOLID:
+    a. Principio de Responsabilidad Única (SRP)
+      La clase Empleado tiene múltiples responsabilidades como calcular el pago, guardar en la base de datos y generar un reporte, todo esto debería estar separado en diferentes clases.
+    b. Principio de Abierto/Cerrado (OCP)
+      La clase Empleado usa un if para diferenciar entre tipos de empleados, en caso debamos agregar más tipos, debemos modificar la clase, violando el principio de estar abierta para extensiones 
+      pero cerrada para modificaciones.
+    c. Principio de Sustitución de Liskov (LSP)
+      Todos los empleados son tratados de la misma manera, sin embargo los cálculos de pago son diferentes, se debería utilizar herencia para garantizar que cualquier subclase de Empleado pueda
+      sustituirlo sin problemas.
+    d. Principio de Segregación de Interfaces (ISP)
+      Empleado tiene métodos (guardarEnBaseDeDatos() y generarReporte()) que pueden no ser necesarios para todas las clases derivadas.
+    c. Principio de Inversión de Dependencias (DIP)
+      SistemaGestionEmpleados depende de Empleado, una clase concreta, debería depender de una abstracción en lugar de una implementación específica.
+
+2. Proponer soluciones para corregir las violaciones. 
+  Para corregir el código, aplicaremos los siguientes cambios:
+
+  S - Responsabilidad Única: Separar cálculo de salario, almacenamiento en base de datos y generación de reportes en diferentes clases.
+  O - Abierto/Cerrado: Usar clases específicas para cada tipo de empleado en lugar de un if-else.
+  L - Sustitución de Liskov: Asegurar que cada empleado tenga su propia implementación de calcularPago().
+  I - Segregación de Interfaces: Definir interfaces separadas para almacenamiento y reportes.
+  D - Inversión de Dependencias: Hacer que SistemaGestionEmpleados dependa de interfaces en lugar de clases concretas.
